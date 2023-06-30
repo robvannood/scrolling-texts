@@ -23,16 +23,23 @@
             font-size: 70px;
             color: red;
         }
-        iframe {
-            display: none;
+        #large-ben {
+            position: absolute;
+            font-size: 300px;
+            color: red;
+            opacity: 0;
+            transition: opacity 1s;
         }
     </style>
 </head>
 <body>
     <div id="original" class="scrolling-text">ben</div>
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/Vem1PNPRR4g?autoplay=1&loop=1&playlist=Vem1PNPRR4g" frameborder="0" allow="autoplay"></iframe>
+    <div id="large-ben"></div>
+    <audio id="background-music" src="https://github.com/alexarthouse19/bensinred/raw/main/The%20Ben%20Song.mp3" loop></audio>
+    <button onclick="playMusic()">Play Music</button>
     <script>
         let spawnInterval = 1000;
+        let spawnedCount = 0;
         function spawnRandom() {
             let randomElement = document.createElement("div");
             randomElement.classList.add("random");
@@ -42,13 +49,22 @@
             document.body.appendChild(randomElement);
             spawnInterval *= 0.9;  // Decrease the interval by 10% each time
             if (spawnInterval < 10) spawnInterval = 10;  // Minimum interval of 10ms
+            spawnedCount++;
+            if (spawnedCount === 500) {
+                document.getElementById("large-ben").textContent = "BEN";
+                document.getElementById("large-ben").style.opacity = 1;
+            }
             setTimeout(spawnRandom, spawnInterval);
         }
         document.getElementById("original").addEventListener('animationend', function() {
             spawnRandom();
         });
+        function playMusic() {
+            document.getElementById("background-music").play();
+        }
     </script>
 </body>
 </html>
+
 
 
