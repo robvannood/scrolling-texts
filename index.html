@@ -5,21 +5,40 @@
     <style>
         @keyframes scroll {
             0% { transform: translateX(100vw); }
-            100% { transform: translateX(-100vw); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(0); }
         }
         .scrolling-text {
             position: absolute;
             white-space: nowrap;
-            animation: scroll 5s linear infinite;
+            animation: scroll 5s forwards;
             font-size: 70px;
             color: red;
-            left: 0;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%);
+        }
+        .random {
+            position: absolute;
+            font-size: 70px;
+            color: red;
         }
     </style>
 </head>
 <body>
-    <div class="scrolling-text">ben</div>
+    <div id="original" class="scrolling-text">BEN</div>
+    <script>
+        function spawnRandom() {
+            let randomElement = document.createElement("div");
+            randomElement.classList.add("random");
+            randomElement.textContent = "BEN";
+            randomElement.style.left = Math.random() * window.innerWidth + "px";
+            randomElement.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(randomElement);
+        }
+        document.getElementById("original").addEventListener('animationend', function() {
+            setInterval(spawnRandom, 1000);
+        });
+    </script>
 </body>
 </html>
