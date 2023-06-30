@@ -26,19 +26,24 @@
     </style>
 </head>
 <body>
-    <div id="original" class="scrolling-text">BEN</div>
+    <div id="original" class="scrolling-text">ben</div>
     <script>
+        let spawnInterval = 1000;
         function spawnRandom() {
             let randomElement = document.createElement("div");
             randomElement.classList.add("random");
-            randomElement.textContent = "BEN";
+            randomElement.textContent = "ben";
             randomElement.style.left = Math.random() * window.innerWidth + "px";
             randomElement.style.top = Math.random() * window.innerHeight + "px";
             document.body.appendChild(randomElement);
+            spawnInterval *= 0.9;  // Decrease the interval by 10% each time
+            if (spawnInterval < 10) spawnInterval = 10;  // Minimum interval of 10ms
+            setTimeout(spawnRandom, spawnInterval);
         }
         document.getElementById("original").addEventListener('animationend', function() {
-            setInterval(spawnRandom, 1000);
+            spawnRandom();
         });
     </script>
 </body>
 </html>
+
