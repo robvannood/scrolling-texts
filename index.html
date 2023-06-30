@@ -23,10 +23,14 @@
             font-size: 70px;
             color: red;
         }
+        iframe {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div id="original" class="scrolling-text">ben</div>
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/Vem1PNPRR4g?autoplay=1&loop=1&playlist=Vem1PNPRR4g" frameborder="0" allow="autoplay"></iframe>
     <script>
         let spawnInterval = 1000;
         function spawnRandom() {
@@ -43,8 +47,8 @@
         document.getElementById("original").addEventListener('animationend', function() {
             spawnRandom();
         });
-        
     </script>
 </body>
 </html>
+
 
