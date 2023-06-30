@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scrolling Text</title>
+    <style>
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .scrolling-text {
+            position: absolute;
+            white-space: nowrap;
+            animation: scroll 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="scrolling-text">ben</div>
+</body>
+</html>
